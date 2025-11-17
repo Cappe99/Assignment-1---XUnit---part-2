@@ -27,5 +27,6 @@ public class QuizTest {
         assertEquals(0, quiz.getScore());
         quiz.increaseScore();
         assertEquals(1, quiz.getScore());
+
     }
 }
