@@ -1,51 +1,37 @@
 package ass1;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 public class QuestionTest {
 
+    private Question question;
+
+    @BeforeEach
+    void setUp() {
+        question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
+    }
+
     @Test
     void shouldReturnTrueIfAnswerIsCorrect() {
-
-        // Arrange
-        Question question = new Question(
-                "What is 2 + 2?",
-                List.of("3", "4", "5"),
-                1);
-
-        // Act
-        boolean result = question.isCorrect(1);
-
-        // Assert
-        assertTrue(result);
+        assertTrue(question.isCorrect(1));
     }
 
     @Test
     void shouldReturnFalseIfAnswerIsWrong() {
-        Question question = new Question(
-                "What is 2 + 2?",
-                List.of("3", "4", "5"),
-                1);
+        assertFalse(question.isCorrect(0));
 
-        boolean result = question.isCorrect(0);
-
-        assertFalse(result);
     }
 
     @Test
     void shouldReturnQuestionText() {
-        Question question = new Question("What is 2+2?",
-                List.of("3", "4", "5"),
-                1);
-
         assertEquals("What is 2+2?", question.getText());
     }
 
     @Test
     void shouldReturnAnswerOptions() {
-        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
         assertEquals(List.of("3", "4", "5"), question.getOptions());
     }
 }
