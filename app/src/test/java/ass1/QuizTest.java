@@ -19,5 +19,4 @@ public class QuizTest {
 
         assertEquals(1, quiz.getTotalQuestions().size());
     }
-
 }
