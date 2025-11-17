@@ -16,4 +16,8 @@ public class Question {
     public boolean isCorrect(int answerIndex) {
         return answerIndex == correctIndex;
     }
+
+    public String getText() {
+        return text;
+    }
 }
