@@ -22,4 +22,24 @@ public class QuestionTest {
         assertTrue(result);
     }
 
+    @Test
+    void shouldReturnFalseIfAnswerIsWrong() {
+        Question question = new Question(
+                "What is 2 + 2?",
+                List.of("3", "4", "5"),
+                1);
+
+        boolean result = question.isCorrect(0);
+
+        assertFalse(result);
+    }
+
+    @Test
+    void shouldReturnQuestionText() {
+        Question question = new Question("What is 2+2?",
+                List.of("3", "4", "5"),
+                1);
+
+        assertEquals("What is 2+2?", question.getText());
+    }
 }
