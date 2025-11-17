@@ -1,0 +1,19 @@
+package ass1;
+
+import java.util.List;
+
+public class Question {
+    private String text;
+    private List<String> options;
+    private int correctIndex;
+
+    public Question(String text, List<String> options, int correctIndex) {
+        this.text = text;
+        this.options = options;
+        this.correctIndex = correctIndex;
+    }
+
+    public boolean isCorrect(int answerIndex) {
+        return answerIndex == correctIndex;
+    }
+}
