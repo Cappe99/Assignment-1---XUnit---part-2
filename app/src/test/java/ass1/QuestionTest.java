@@ -42,4 +42,10 @@ public class QuestionTest {
 
         assertEquals("What is 2+2?", question.getText());
     }
+
+    @Test
+    void shouldReturnAnswerOptions() {
+        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
+        assertEquals(List.of("3", "4", "5"), question.getOptions());
+    }
 }
