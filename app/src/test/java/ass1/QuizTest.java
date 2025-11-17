@@ -19,4 +19,13 @@ public class QuizTest {
 
         assertEquals(1, quiz.getTotalQuestions().size());
     }
+
+    @Test
+    void shouldIncreaseScoreWhenAnswerISCorrect() {
+        Quiz quiz = new Quiz();
+
+        assertEquals(0, quiz.getScore());
+        quiz.increaseScore();
+        assertEquals(1, quiz.getScore());
+    }
 }
