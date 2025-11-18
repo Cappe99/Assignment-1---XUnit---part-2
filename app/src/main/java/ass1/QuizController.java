@@ -12,4 +12,8 @@ public class QuizController {
             quiz.increaseScore();
         }
     }
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
 }
