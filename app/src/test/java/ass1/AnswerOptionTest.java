@@ -10,5 +10,4 @@ public class AnswerOptionTest {
         AnswerOption opt = new AnswerOption("4", true);
         assertTrue(opt.isCorrect());
     }
-
 }
