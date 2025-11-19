@@ -32,4 +32,28 @@ public class QuizControllerTest {
 
         assertEquals(10, quiz.getTotalQuestions().size());
     }
+
+    @Test
+    void shouldThrowExceptionIfAnswerIndexIsNegative() {
+        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
+        assertThrows(IllegalArgumentException.class, () -> controller.answerQuestion(question, -1));
+    }
+
+    @Test
+    void shouldThrowExceptionIfAnswerIndexIsTooLarge() {
+        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
+        assertThrows(IllegalArgumentException.class, () -> controller.answerQuestion(question, 5));
+    }
+
+    @Test
+    void scoreShouldNotIncreaseWhenAnswerIsInvalid() {
+        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
+
+        try {
+            controller.answerQuestion(question, 5);
+        } catch (IllegalArgumentException e) {
+        }
+
+        assertEquals(0, quiz.getScore());
+    }
 }
