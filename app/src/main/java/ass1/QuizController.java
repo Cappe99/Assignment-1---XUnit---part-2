@@ -11,6 +11,10 @@ public class QuizController {
 
   public void answerQuestion(Question question, int answerIndex) {
 
+    if (answerIndex < 0 || answerIndex >= question.getOptions().size()) {
+      throw new IllegalArgumentException("Invalid answer index: " + answerIndex);
+    }
+
     if (question.isCorrect(answerIndex)) {
       quiz.increaseScore();
     }
