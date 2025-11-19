@@ -17,4 +17,14 @@ public class QuizControllerTest {
 
         assertEquals(1, quiz.getScore());
     }
+
+    @Test
+    void quizControllerShouldLoadTenQuestions() {
+        Quiz quiz = new Quiz();
+        QuizController controller = new QuizController(quiz);
+
+        controller.loadDefaultQuestions();
+
+        assertEquals(10, quiz.getTotalQuestions().size());
+    }
 }
