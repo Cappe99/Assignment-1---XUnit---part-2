@@ -9,20 +9,19 @@ public class QuizControllerTest {
 
     private Quiz quiz;
     private QuizController controller;
+    private Question simpleQuestion;
 
     @BeforeEach
     void setUp() {
         quiz = new Quiz();
         controller = new QuizController(quiz);
+        simpleQuestion = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
     }
 
     @Test
     void shouldRunQuizAndUpdateScore() {
-        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
-        quiz.addQuestion(question);
-
-        controller.answerQuestion(question, 1);
-
+        quiz.addQuestion(simpleQuestion);
+        controller.answerQuestion(simpleQuestion, 1);
         assertEquals(1, quiz.getScore());
     }
 
@@ -35,22 +34,22 @@ public class QuizControllerTest {
 
     @Test
     void shouldThrowExceptionIfAnswerIndexIsNegative() {
-        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
-        assertThrows(IllegalArgumentException.class, () -> controller.answerQuestion(question, -1));
+        quiz.addQuestion(simpleQuestion);
+        assertThrows(IllegalArgumentException.class, () -> controller.answerQuestion(simpleQuestion, -1));
     }
 
     @Test
     void shouldThrowExceptionIfAnswerIndexIsTooLarge() {
-        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
-        assertThrows(IllegalArgumentException.class, () -> controller.answerQuestion(question, 5));
+        quiz.addQuestion(simpleQuestion);
+        assertThrows(IllegalArgumentException.class, () -> controller.answerQuestion(simpleQuestion, 5));
     }
 
     @Test
     void scoreShouldNotIncreaseWhenAnswerIsInvalid() {
-        Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
+        quiz.addQuestion(simpleQuestion);
 
         try {
-            controller.answerQuestion(question, 5);
+            controller.answerQuestion(simpleQuestion, 5);
         } catch (IllegalArgumentException e) {
         }
 
