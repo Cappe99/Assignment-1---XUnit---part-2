@@ -7,6 +7,20 @@ import java.util.List;
 
 public class QuizTest {
 
+    private Quiz createQuizWithQuestions(int numQuestions) {
+        Quiz quiz = new Quiz();
+        for (int i = 1; i <= numQuestions; i++) {
+            quiz.addQuestion(new Question("Q" + i, List.of("A", "B"), 0));
+        }
+        return quiz;
+    }
+
+    private void increaseScoreNTimes(Quiz quiz, int times) {
+        for (int i = 0; i < times; i++) {
+            quiz.increaseScore();
+        }
+    }
+
     @Test
     void shouldAddQuestionToQuiz() {
 
@@ -49,40 +63,18 @@ public class QuizTest {
     @Test
     void nineAndMoreSholdReturnA() {
         Quiz quiz = new Quiz();
-        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
 
-        quiz.increaseScore();
-        quiz.increaseScore();
-
+        quiz = createQuizWithQuestions(10);
+        increaseScoreNTimes(quiz, 9);
         assertEquals("A", quiz.getLetterGrade());
-
     }
 
     @Test
     void eightShouldReturnB() {
         Quiz quiz = new Quiz();
 
-        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
-
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-
+        quiz = createQuizWithQuestions(10);
+        increaseScoreNTimes(quiz, 8);
         assertEquals("B", quiz.getLetterGrade());
     }
 
@@ -90,25 +82,8 @@ public class QuizTest {
     void sevenShouldReturnC() {
         Quiz quiz = new Quiz();
 
-        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
-
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-
+        quiz = createQuizWithQuestions(10);
+        increaseScoreNTimes(quiz, 7);
         assertEquals("C", quiz.getLetterGrade());
     }
 
@@ -116,23 +91,8 @@ public class QuizTest {
     void fiveShouldReturnD() {
         Quiz quiz = new Quiz();
 
-        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
-
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-
+        quiz = createQuizWithQuestions(10);
+        increaseScoreNTimes(quiz, 5);
         assertEquals("D", quiz.getLetterGrade());
     }
 
@@ -140,22 +100,8 @@ public class QuizTest {
     void fourShouldReturnE() {
         Quiz quiz = new Quiz();
 
-        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
-
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-
+        quiz = createQuizWithQuestions(10);
+        increaseScoreNTimes(quiz, 4);
         assertEquals("E", quiz.getLetterGrade());
     }
 
@@ -163,21 +109,8 @@ public class QuizTest {
     void treeAndLessShouldReturnF() {
         Quiz quiz = new Quiz();
 
-        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
-        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
-
-        quiz.increaseScore();
-        quiz.increaseScore();
-        quiz.increaseScore();
-
+        quiz = createQuizWithQuestions(10);
+        increaseScoreNTimes(quiz, 3);
         assertEquals("F", quiz.getLetterGrade());
     }
 }
