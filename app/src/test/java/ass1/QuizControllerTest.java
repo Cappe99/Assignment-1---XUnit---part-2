@@ -55,4 +55,11 @@ public class QuizControllerTest {
 
         assertEquals(0, quiz.getScore());
     }
+
+    @Test
+    void scoreShouldNotIncreaseWhenAnswerIsIncorrect() {
+        quiz.addQuestion(simpleQuestion);
+        controller.answerQuestion(simpleQuestion, 0);
+        assertEquals(0, quiz.getScore());
+    }
 }
