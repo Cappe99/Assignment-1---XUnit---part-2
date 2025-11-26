@@ -45,4 +45,138 @@ public class QuizTest {
         assertTrue(totalQuestions.contains(question1));
         assertTrue(totalQuestions.contains(question2));
     }
+
+    @Test
+    void nineAndMoreSholdReturnA() {
+        Quiz quiz = new Quiz();
+        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
+
+        quiz.increaseScore();
+        quiz.increaseScore();
+
+        assertEquals("A", quiz.getLetterGrade());
+
+    }
+
+    @Test
+    void eightShouldReturnB() {
+        Quiz quiz = new Quiz();
+
+        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
+
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+
+        assertEquals("B", quiz.getLetterGrade());
+    }
+
+    @Test
+    void sevenAndSixShouldReturnC() {
+        Quiz quiz = new Quiz();
+
+        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
+
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+
+        assertEquals("C", quiz.getLetterGrade());
+    }
+
+    @Test
+    void fiveShouldReturnD() {
+        Quiz quiz = new Quiz();
+
+        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
+
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+
+        assertEquals("D", quiz.getLetterGrade());
+    }
+
+    @Test
+    void fourShouldReturnE() {
+        Quiz quiz = new Quiz();
+
+        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
+
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+
+        assertEquals("E", quiz.getLetterGrade());
+    }
+
+    @Test
+    void treeAndLessShouldReturnF() {
+        Quiz quiz = new Quiz();
+
+        quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q2", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q3", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q4", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q5", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q6", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q7", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q8", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
+        quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
+
+        quiz.increaseScore();
+        quiz.increaseScore();
+        quiz.increaseScore();
+
+        assertEquals("F", quiz.getLetterGrade());
+    }
 }

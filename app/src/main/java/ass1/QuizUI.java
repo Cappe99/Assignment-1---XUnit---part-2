@@ -31,8 +31,20 @@ public class QuizUI {
             System.out.println("  " + i + ": " + question.getOptions().get(i));
         }
 
-        System.out.print("Your answer: ");
-        int answer = readInt();
+        int answer;
+
+        while (true) {
+            System.out.print("Your answer: ");
+
+            answer = readInt();
+
+            if (answer >= 0 && answer < question.getOptions().size()) {
+                break;
+            }
+
+            System.out.println("Invalid choice. Please enter a number between 0 and "
+                    + (question.getOptions().size() - 1) + ".");
+        }
 
         controller.answerQuestion(question, answer);
         System.out.println();
