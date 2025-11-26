@@ -87,7 +87,7 @@ public class QuizTest {
     }
 
     @Test
-    void sevenAndSixShouldReturnC() {
+    void sevenShouldReturnC() {
         Quiz quiz = new Quiz();
 
         quiz.addQuestion(new Question("Q1", List.of("A", "B"), 0));
@@ -101,6 +101,7 @@ public class QuizTest {
         quiz.addQuestion(new Question("Q9", List.of("A", "B"), 0));
         quiz.addQuestion(new Question("Q10", List.of("A", "B"), 0));
 
+        quiz.increaseScore();
         quiz.increaseScore();
         quiz.increaseScore();
         quiz.increaseScore();

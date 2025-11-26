@@ -28,4 +28,24 @@ public class Quiz {
         score++;
     }
 
+    public String getLetterGrade() {
+        int total = questions.size();
+
+        double percent = 100.0 * score / total;
+
+        if (percent >= 90) {
+            return "A";
+        } else if (percent >= 80) {
+            return "B";
+        } else if (percent >= 70) {
+            return "C";
+        } else if (percent >= 50) {
+            return "D";
+        } else if (percent >= 40) {
+            return "E";
+        }
+        return "F";
+
+    }
+
 }
