@@ -6,6 +6,9 @@ public class QuizUI {
     private QuizController controller;
     private Scanner scanner = new Scanner(System.in);
 
+    private static final String WELCOME_MESSAGE = "=== Welcome to the Quiz! ===";
+    private static final String FINISHED_MESSAGE = "=== Quiz finished! ===";
+
     public QuizUI(QuizController controller) {
         this.controller = controller;
     }
@@ -13,18 +16,23 @@ public class QuizUI {
     public void run() {
         controller.loadDefaultQuestions();
 
-        System.out.println("=== Welcome to the Quiz! ===\n");
+        System.out.println(WELCOME_MESSAGE + "\n");
 
-        for (Question question : controller.getQuiz().getTotalQuestions()) {
+        Quiz quiz = controller.getQuiz();
+
+        for (Question question : quiz.getTotalQuestions()) {
             askQuestion(question);
         }
 
-        System.out.println("\n=== Quiz finished! ===");
-        Quiz quiz = controller.getQuiz();
+        printFinalScore(quiz);
+
+    }
+
+    private void printFinalScore(Quiz quiz) {
+        System.out.println("\n" + FINISHED_MESSAGE);
         System.out.println("Your score: " + quiz.getScore()
                 + "/" + quiz.getTotalQuestions().size()
                 + " (" + quiz.getLetterGrade() + ")");
-
     }
 
     private void askQuestion(Question question) {
