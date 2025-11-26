@@ -22,6 +22,7 @@ public class QuizUI {
         System.out.println("\n=== Quiz finished! ===");
         System.out.println("Your score: " + controller.getQuiz().getScore()
                 + "/" + controller.getQuiz().getTotalQuestions().size());
+
     }
 
     private void askQuestion(Question question) {

@@ -3,6 +3,8 @@ package ass1;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
@@ -109,5 +111,83 @@ public class QuizUITest {
 
         String output = outputStream.toString();
         assert (output.contains("Your score: 1/1"));
+    }
+
+    @Test
+    void testLetterGradeA() {
+        when(mockQuiz.getTotalQuestions()).thenReturn(Collections.emptyList());
+        when(mockQuiz.getScore()).thenReturn(9);
+        when(mockQuiz.getLetterGrade()).thenReturn("A");
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("(A)"));
+    }
+
+    @Test
+    void testLetterGradeB() {
+        when(mockQuiz.getTotalQuestions()).thenReturn(Collections.emptyList());
+        when(mockQuiz.getScore()).thenReturn(8);
+        when(mockQuiz.getLetterGrade()).thenReturn("B");
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("(B)"));
+    }
+
+    @Test
+    void testLetterGradeC() {
+        when(mockQuiz.getTotalQuestions()).thenReturn(Collections.emptyList());
+        when(mockQuiz.getScore()).thenReturn(7);
+        when(mockQuiz.getLetterGrade()).thenReturn("C");
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("(C)"));
+    }
+
+    @Test
+    void testLetterGradeD() {
+        when(mockQuiz.getTotalQuestions()).thenReturn(Collections.emptyList());
+        when(mockQuiz.getScore()).thenReturn(5);
+        when(mockQuiz.getLetterGrade()).thenReturn("D");
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("(D)"));
+    }
+
+    @Test
+    void testLetterGradeE() {
+        when(mockQuiz.getTotalQuestions()).thenReturn(Collections.emptyList());
+        when(mockQuiz.getScore()).thenReturn(4);
+        when(mockQuiz.getLetterGrade()).thenReturn("E");
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("(E)"));
+    }
+
+    @Test
+    void testLetterGradeF() {
+        when(mockQuiz.getTotalQuestions()).thenReturn(Collections.emptyList());
+        when(mockQuiz.getScore()).thenReturn(3);
+        when(mockQuiz.getLetterGrade()).thenReturn("F");
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("(F)"));
     }
 }
