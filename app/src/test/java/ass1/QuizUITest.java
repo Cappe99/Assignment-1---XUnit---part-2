@@ -190,4 +190,64 @@ public class QuizUITest {
         String output = outputStream.toString();
         assertTrue(output.contains("(F)"));
     }
+
+    @Test
+    void testReadIntHandlesInvalidInput() {
+        Question mockQuestion = mock(Question.class);
+        when(mockQuestion.getText()).thenReturn("Q?");
+        when(mockQuestion.getOptions()).thenReturn(Arrays.asList("A", "B"));
+
+        when(mockQuiz.getTotalQuestions()).thenReturn(Arrays.asList(mockQuestion));
+        when(mockQuiz.getScore()).thenReturn(0);
+
+        String input = "hej\n1\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        verify(mockController).answerQuestion(mockQuestion, 1);
+        String output = outputStream.toString();
+        assertTrue(output.contains("Enter a number:"));
+    }
+
+    @Test
+    void testAskQuestionHandlesInvalidChoice() {
+        Question mockQuestion = mock(Question.class);
+        when(mockQuestion.getText()).thenReturn("Q?");
+        when(mockQuestion.getOptions()).thenReturn(Arrays.asList("A", "B"));
+
+        when(mockQuiz.getTotalQuestions()).thenReturn(Arrays.asList(mockQuestion));
+        when(mockQuiz.getScore()).thenReturn(0);
+
+        String input = "5\n1\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Invalid choice"), "Should prompt invalid choice message");
+        verify(mockController).answerQuestion(mockQuestion, 1);
+    }
+
+    @Test
+    void testAskQuestionInvalidThenValidInput() {
+        Question mockQuestion = mock(Question.class);
+        when(mockQuestion.getText()).thenReturn("Q?");
+        when(mockQuestion.getOptions()).thenReturn(Arrays.asList("A", "B"));
+
+        when(mockQuiz.getTotalQuestions()).thenReturn(Arrays.asList(mockQuestion));
+        when(mockQuiz.getScore()).thenReturn(0);
+
+        String input = "-1\n1\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        quizUI = new QuizUI(mockController);
+        quizUI.run();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Invalid choice"), "Should prompt invalid choice message");
+        verify(mockController).answerQuestion(mockQuestion, 1);
+    }
 }
