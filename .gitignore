@@ -3,3 +3,12 @@
 
 # Ignore Gradle build output directory
 build
+app/bin/test/ass1/ScoreBoardTest.class
+app/bin/test/ass1/QuizUITest.class
+app/bin/test/ass1/QuizTest.class
+app/bin/test/ass1/QuizControllerTest.class
+app/bin/test/ass1/AppTest.class
+app/bin/main/ass1/QuizUI.class
+app/bin/main/ass1/QuizController.class
+app/bin/main/ass1/Quiz.class
+app/bin/main/ass1/App.class

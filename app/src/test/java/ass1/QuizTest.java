@@ -23,13 +23,15 @@ public class QuizTest {
 
     @Test
     void shouldAddQuestionToQuiz() {
-
+        // Arrange - förbereda testdata
         Quiz quiz = new Quiz();
 
         Question question = new Question("What is 2+2?", List.of("3", "4", "5"), 1);
 
+        // Act - utför handlingen
         quiz.addQuestion(question);
 
+        // Assert - verifiera resultatet
         assertEquals(1, quiz.getTotalQuestions().size());
     }
 
@@ -113,4 +115,5 @@ public class QuizTest {
         increaseScoreNTimes(quiz, 3);
         assertEquals("F", quiz.getLetterGrade());
     }
+
 }
